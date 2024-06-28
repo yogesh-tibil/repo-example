@@ -1,0 +1,73 @@
+1) select *,upper(emp_fname) as EmpName from employeeinfo;
+
+2) select current_date;
+
+3) select *,substr(emp_lname,1,4) as retrieve_name from employeeinfo;
+
+4) create table tab_name as select * from employeeinfo;
+
+5) select * from employeeposition where salary between '50000' and '100000';
+
+6) select * from employeeinfo where emp_lname like'S%';
+
+7) select * from employeeinfo group by emp_id limit 5;
+
+8) select concat(emp_fname,' ',emp_lname) from employeeinfo;
+
+9) create table Student(student_id int not null,stu_name varchar(30) not null,stu_subject_id int,foreign key(stu_subject_id) references Subject(Subject_id),stu_marks int not null,stu_age int not null);
+
+10) create table Subject(subject_id int primary key,subject_name varchar(30) not null);
+
+11) insert into Student values(101,'Pavan',10,80,22),(102,'Adi',20,75,21),(103,'Prekshith',30,70,23),(104,'Sachin',40,65,22),(105,'Shruthi',50,75,21),(106,'Vinaya',60,80,22);
+
+12) insert into Subject values(10,'Maths'),(20,'Physics'),(30,'Sceience'),(40,'Social sceinece'),(50,'English'),(60,'Kannada');
+
+13) select * from Student where stu_age=22;
+
+14)select max(stu_marks) as max_marks,min(stu_marks) as min_marks from student;
+
+15) select * from subject limit 1;
+
+16) select * from student limit 5;
+
+17) select * from student order by student_id desc limit 5;
+
+18) select * from (select *,row_number() over (order by student_id) as evn from student)as d where evn%2=0;
+
+19) select * from (select *,row_number() over (order by student_id) as odd from student)as d where odd%2!=0;
+
+20) select * from student order by stu_marks desc limit 1;
+
+21) select * from student order by stu_marks desc limit 1 offset 2;
+
+22) select * from student order by stu_marks desc limit 3;
+
+23) select stu_name,stu_marks from student where stu_age=22;
+
+24) select subject_name,max(stu_marks) from student inner join subject on student.stu_subject_id=subject.subject_id group by subject_name;
+
+25) select * from student where stu_marks>70 and stu_age>20;
+
+26) select subject_id,count(*) as number_student from subject group by subject_id;
+
+27) select * from student order by stu_name desc;
+
+28) select name,title from book inner join author on author.id=book.author_id;
+
+29) select name,title from book inner join author on author.id=book.author_id where publish_year>1950;
+
+30) select book.title from book inner join adaptation on book.id=adaptation.book_id where release_year-publish_year<=4 and book.rating<release_year-publish_year;
+
+31) select book.title,adaptation.title,type from book left join adaptation on book.id=adaptation.book_id;
+
+32) select book.title,book_review.review from book left join book_review on book.id=book_review.book_id;
+
+33) select book.title,author.name from author inner join book on author.id=book.author_id;
+
+34) select product.name,nutrition_data.calories,department.name from department inner join product on (department.id=product.department_id) inner join nutrition_data on product.id=nutrition_data.product_id where calories<'150';
+
+35) select product.name,producer.id,department.id,nutrition_data.carbohydrate from department inner join product on (department.id=product.department_id) inner join producer on (producer.id=product.producer_id) inner join nutrition_data on (product.id=nutrition_data.product_id);
+
+36) select product.id,product.price,producer.name,department.name from product inner join department on (department.id=product.department_id) inner join producer on producer.id=product.producer_id;
+
+37) 
